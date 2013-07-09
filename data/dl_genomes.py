@@ -84,7 +84,8 @@ if __name__ == '__main__':
         print "Error: no list provided.  input the name of a list of organisms defined in orgs.py"
         exit()
     orgs = sys.argv[1]
-    dl(eval(orgs))
+    execfile(orgs)
+    dl(orgs)
 #    example usage:
 #    dl(["Haemophilus_influenzae","Escherichia coli"])
 
