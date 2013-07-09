@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python
 # Author: Sefa Kilic
 # Modifications: PON
 """
@@ -121,7 +121,7 @@ from matplotlib import pyplot as plt
 import pylab
 
 pairwise2.MAX_ALIGNMENTS = 1
-BLAST_BIN_PATH = "/home/poneill/ncbi-blast-2.2.26+/bin/"
+BLAST_BIN_PATH = "/usr/bin/"
 DB_PATH = 'blastdb'
 SITE_LENGTH = 82
 ORG_PATH = "data"
@@ -197,10 +197,12 @@ def populate_dbs(orgs):
     for org in orgs:
         print "constructing db for ",  org
         org_dir = head([od for od in org_dirs if org_matches_dir(org, od)])
+        org_dir = ''.join(org_dir)
         full_org_dir = os.path.join(ORG_PATH, org_dir)
         fasta_file = head([f for f in os.listdir(full_org_dir)
                            if f.endswith(file_ext)])
         print "using fasta file", fasta_file
+	fasta_file = ''.join(fasta_file)
         sp = {'name':org, 
               'genome_file':os.path.join(full_org_dir, fasta_file), 
               'db': os.path.join(DB_PATH, org)}

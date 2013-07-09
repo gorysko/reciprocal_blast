@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/python
 
 """This script accepts a list species names and sets up slurm jobs to
 perform pair-wise reciprocal BLAST searches between them.
@@ -63,6 +63,8 @@ def reciprocal_blasts2(orgs,new_orgs=None):
             print "looking for data directory for ", org1
             org_dir = head([od for od in org_dirs if org_matches_dir(org1,od)])
             print ORG_PATH,org_dir
+#            import pdb;pdb.set_trace()
+            org_dir = ''.join(org_dir)
             full_org_dir = os.path.join(ORG_PATH,org_dir)
             fasta_file = head([f for f in os.listdir(full_org_dir)
                                             if f.endswith(file_ext)])
